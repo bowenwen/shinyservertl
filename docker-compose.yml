@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  translinkshiny:
+    image: bowenwen/shinyservertl:latest
+    command: /usr/bin/shiny-server.sh
+    container_name: shinysession
+    volumes:
+      - ./:/srv/shiny-server
+      - ./logs/:/var/log/shiny-server
+    ports:
+      - "3838:3838"
+    networks:
+      - translink_td
+
+networks:
+  translink_td:
